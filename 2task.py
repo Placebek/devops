@@ -1,1 +1,1 @@
-ыуацуццуцу
+import trump
