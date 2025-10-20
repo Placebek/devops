@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: students
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+
+  frontend:
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./react:/frontend
+      - /react/node_modules
+
+volumes:
+  postgres_data:
