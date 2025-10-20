@@ -1,0 +1,50 @@
+# === Go ===
+# Скомпилированные файлы и кеш
+/bin/
+/build/
+/dist/
+/out/
+/tmp/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Кэш Go
+**/vendor/
+**/go.sum
+**/go.work
+**/go.work.sum
+
+# === IDE / Editors ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+
+# === Docker ===
+# Локальные данные и тома
+postgres_data/
+*.log
+
+# === Environment ===
+.env
+.env.*
+!env.example   # если хочешь оставить шаблон
+
+# === Dependencies ===
+node_modules/
+__pycache__/
+*.pyc
+
+# === Misc ===
+*.bak
+*.tmp
+*.old
