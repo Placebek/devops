@@ -3,26 +3,25 @@ import pkg from "pg";
 const { Pool } = pkg;
 
 const app = express();
+const port = 3000;
 
 const pool = new Pool({
-  user: "postgres",
-  host: "db",
-  database: "mydb",
-  password: "postgres",
-  port: 5432,
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "postgres",
+  password: process.env.DB_PASSWORD || "postgres",
+  database: process.env.DB_NAME || "mydb",
 });
 
 app.get("/", async (req, res) => {
   try {
     const result = await pool.query("SELECT NOW()");
-    res.json({
-      message: "Salem from Node,Postgres,Docker",
-      time: result.rows[0],
-    });
+    res.send(`PostgreSQL работает! Время: ${result.rows[0].now}`);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Database connection error");
+    res.status(500).send("Ошибка подключения к PostgreSQL");
   }
 });
 
-app.listen(3000, () => console.log("✅ Server running on port 3000"));
+app.listen(port, () => {
+  console.log(`Сервер запущен на http://localhost:${port}`);
+});

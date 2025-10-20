@@ -10,11 +10,11 @@ services:
       - DB_HOST=db
       - DB_USER=postgres
       - DB_PASSWORD=postgres
-      - DB_NAME=mydb
+      - DB_NAME=company
     depends_on:
       - db
     networks:
-      - app-network   # ✅ Ортақ желі
+      - app-network
 
   db:
     image: postgres:15
@@ -23,7 +23,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: mydb
+      POSTGRES_DB: company
     ports:
       - "5432:5432"
     volumes:
