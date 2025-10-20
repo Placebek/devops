@@ -1,0 +1,9 @@
+docker compose build
+docker compose up
+
+docker ps 
+docker stop flask_web
+
+
+.
+
