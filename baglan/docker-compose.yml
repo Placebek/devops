@@ -1,0 +1,34 @@
+version: 3.10 
+
+services:
+  db:
+  image: postgre:15
+  container_name: postgres_db
+  restart: always
+  environment:
+      POSTGRES_USER=student
+      POSTGRES_PASSWORD=secret
+      POSTGRES_DB=university
+  ports:
+      - "5432:5432"
+  networks:
+      - backend_net
+
+  web:
+  image:python:3.10
+  container_name: flask_web
+  depends_on:
+      - db
+  working_dir: /app
+  environment:
+      POSTGRES_USER=student
+      POSTGRES_PASSWORD=secret
+      POSTGRES_DB=university
+  ports:
+      -"5000:5000"
+  networks:
+      - backend_net
+  volumes:
+      -.:app
+  command: bash -c "pip install flask"
+  ports:
