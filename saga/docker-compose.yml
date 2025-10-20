@@ -1,0 +1,17 @@
+services:
+  backend:
+    image: node:18
+    container_name: express_backend
+    working_dir: /saga
+    volumes:
+      - ./saga:/app
+    command: bash -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    driver: bridge
+
