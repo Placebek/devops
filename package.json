@@ -1,0 +1,6 @@
+{
+  "name": "js-hello",
+  "version": "1.0.0",
+  "description": "Docker Works!",
+  "main": "app.js"
+}
