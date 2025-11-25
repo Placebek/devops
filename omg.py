@@ -4,8 +4,8 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn # type: ignore
 import os
-from app.services import TextExtractorService, TTSService
-
+from services.text_extractor import TextExtractorService
+from services.tts_service import TTSService         
 app = FastAPI(title="Talk To Docs API", version="1.0.0")
 
 # Настройка CORS для фронтенда
@@ -94,3 +94,7 @@ if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+
+
